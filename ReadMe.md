@@ -11,17 +11,18 @@ Note: these steps assume you’re working on Mac OS X (MySQL, command line) and 
 
 ##2. Tweaking the Data
 1. Set up the [item types](http://manual.koha-community.org/3.6/en/basicparams.html) in your Koha installation and make note of the item type codes.
-2. Note the media types in your Librarian’s Edge installation and tweak the [export queries](Export MySQL to TSV.sql) file as needed.
-3. Export using queries in the [Export MySQL to TSV](Export MySQL to TSV.sql) file.
+2. Make a list of the media types in your Librarian’s Edge installation and the corresponding item types in your new Koha library.
+3. Export the data from MySQL to tab-separated text files by setting variables and running the query in the [Export MySQL to TSV](Export MySQL to TSV.sql) file as many times as you have MediaTypes in Librarian’s Edge.
 
 ##3. Converting the Data
 1. Using [MarcEdit’s](http://marcedit.reeset.net) Delimited Text Translator tool, convert the `.txt` files to MRK format, using the [MarcEdit template](MarcEdit template.mrd) for field mappings.
 2. Using [MarcEdit’s](http://marcedit.reeset.net) MarcMaker tool, convert the `.mrk` files to MRC format.
-3. Set up the categories in [Koha](http://koha-community.org/) and import the `.mrc` files.
 
 ##4. Importing the Data
-1. Import to Koha
+1. Navigate to the Koha “Stage MARC records for import” tool.
+2. Upload the compiled `.mrc` file into the resevoir.
+3. Navigate to the “Staged MARC management” tool, click on the file name of the batch(es) you imported, set preferences as desired, and import them to the library.
 
 #Reference
-- For information on MARC codes and formatting, see [this site](http://www.loc.gov/marc/bibliographic/bdsummary.html).
-- For a list of codes used in the template, refer to [this file](MARC mappings.md).
+- For information on MARC codes and formatting, see [the official MARC21 format site](http://www.loc.gov/marc/bibliographic/bdsummary.html) and the [Koha-specific fields](http://goo.gl/QR4SnT).
+- For information on the Librarian’s Edge fields to MARC21 mappings, refer to [this file](MARC mappings.md).

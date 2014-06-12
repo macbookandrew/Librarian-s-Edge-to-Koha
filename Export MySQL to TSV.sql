@@ -11,7 +11,9 @@ SET @Query = CONCAT("SELECT *,
 	@HomeBranch as HomeBranch,
 	`MediaLocations`.`MediaLocationCode` as HoldingBranch,
 	RTRIM(CONCAT(`AuthorLastName`, ', ', `AuthorFirstName`, ' ', `AuthorMiddleName`)) as AuthorFullName,				# concatenates author names
-	RTRIM(REPLACE(CONCAT_WS(' ',`CallNum1`, `CallNum2`, `CallNum3`, `CallNum4`, `CallNum5`),'  ',' ')) as CallNumFull	# concatenates call number
+	RTRIM(REPLACE(CONCAT_WS(' ',`CallNum1`, `CallNum2`, `CallNum3`, `CallNum4`, `CallNum5`),'  ',' ')) as CallNumFull,	# concatenates call number
+	REPLACE(`ISBN`,'-','') as ISBNFormatted,
+	REPLACE(`LCCN`,'-','') as LCCNFormatted
 	INTO OUTFILE '",@Outputfile,"'
 		FIELDS TERMINATED BY \'\t\' LINES TERMINATED BY \'\r\n\'
 	FROM Media

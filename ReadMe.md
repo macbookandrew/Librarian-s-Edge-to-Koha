@@ -22,8 +22,6 @@ Note: these steps assume you’re working on Mac OS X (MySQL, command line) and 
 ##4. Importing the Data
 1. Import to Koha
 
-
-
-
-952$o: Call number field
-952$y: Koha item type (must be already set)
+#Reference
+- For information on MARC codes and formatting, see [this site](http://www.loc.gov/marc/bibliographic/bdsummary.html).
+- For a list of codes used in the template, refer to [this file](MARC mappings.md).

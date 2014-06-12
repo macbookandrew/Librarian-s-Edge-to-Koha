@@ -80,3 +80,14 @@ CREATE TABLE `MediaTypes` (
   `Modified` varchar(255) DEFAULT NULL,
   `ModifiedBy` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `MediaLocations` (
+  `MediaLocationRefID` int(11) DEFAULT NULL,
+  `MediaLocationOrder` varchar(255) DEFAULT NULL,
+  `MediaLocationCode` varchar(255) DEFAULT NULL,
+  `MediaLocationDesc` varchar(255) DEFAULT NULL,
+  `Created` varchar(255) DEFAULT NULL,
+  `CreatedBy` varchar(255) DEFAULT NULL,
+  `Modified` varchar(255) DEFAULT NULL,
+  `ModifiedBy` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

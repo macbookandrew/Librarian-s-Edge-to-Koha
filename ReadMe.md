@@ -6,7 +6,7 @@ Note: these steps assume you’re working on Mac OS X (MySQL, command line) and 
 
 ##1. Getting the Data
 1. Connect to MSSQL server containing Librarian’s Edge data, using [Navicat](http://www.navicat.com/products/navicat-for-sqlserver) or another MSSQL client.
-2. Export at least the `Media` and `MediaTypes` tables as CSV, preferably with column headings.
+2. Export at least the `Media`, `MediaTypes`, and `MediaLocations` tables as CSV, preferably with column headings.
 3. Create a MySQL database, use the [Media table syntax](Media table syntax.sql) SQL file to set up the tables, then import the CSV files to those tables.
 
 ##2. Tweaking the Data

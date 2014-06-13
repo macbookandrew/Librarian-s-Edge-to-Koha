@@ -1,5 +1,7 @@
+These mappings refer to files exported using the full [MySQL export query](Export MySQL to TSV - full.sql), rather than the [limited export query](Export MySQL to TSV.sql), which exports only the fields needed for Koha.
+
 #MARC Mappings
-- Field 0 (MediaTypeRefID): mapped to **[024$a](http://www.loc.gov/marc/bibliographic/bd024.html)** with indicators **8a**
+- Field 0 (MediaRefID): mapped to **[024$a](http://www.loc.gov/marc/bibliographic/bd024.html)** with indicators **8a**
 - Field 8 (Title): mapped to **[245$a](http://www.loc.gov/marc/bibliographic/bd245.html)** with indicators **00**, *combined with field 42*
 	- Field 42 (StmtOfResponsibility): mapped to **[245$c](http://www.loc.gov/marc/bibliographic/bd245.html)** with indicators 00, *combined with field 8*
 - Field 9 (MediaTypeRefID): not directly mapped, but keyed to `MediaTypes.MediaTypeRefID` and used to create `KohaItemType`

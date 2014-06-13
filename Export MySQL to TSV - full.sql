@@ -8,35 +8,14 @@ SET @HomeBranch = 'MainLibrary';	# The name of your main (owning) library (see h
 
 SET @Query = CONCAT("SELECT '024$a','245$a','245$c','490$a','541$a','541$e','541$d','541$h','541$a1','541$a2','542$g','264$c','250$a','300$a','300$c','260$b','260$a','260$c','520$a','952$i','952$g','952$y','952$a','952$b','100$a','952$o','020$a','021$a'
 UNION ALL
-SELECT 
-	MediaRefID as 024$a,
-	Title as 245$a,
-	StmtOfResponsibility as 245$c,
-	Series as 490$a,
-	Source as 541$a,
-	AccessionNum as 541$e,
-	DateAcquired as 541$d,
-	Cost as 541$h,
-	Donatedby as 541$a1,
-	InHonorOf as 541$a2,
-	CopyrightDate as 542$g,
-	Copyrightdate as 264$c,
-	Edition as 250$a,
-	TechnicalDesc as 300$a,
-	Dimension as 300$c,
-	Publisher as 260$b,
-	PublisherLocation as 260$a,
-	PublicationDate as 260$c,
-	SummaryText as 520$a,
-	MediaRefID as 952$i,
-	Cost as 952$g,
-	@KohaItemType as 952$y,
-	@HomeBranch as 952$a,
-	`MediaLocations`.`MediaLocationCode` as 952$b,
-	RTRIM(CONCAT(`AuthorLastName`, ', ', `AuthorFirstName`, ' ', `AuthorMiddleName`)) as 100$a,				# concatenates author names
-	RTRIM(REPLACE(CONCAT_WS(' ',`CallNum1`, `CallNum2`, `CallNum3`, `CallNum4`, `CallNum5`),'  ',' ')) as 952$o,	# concatenates call number
-	REPLACE(`ISBN`,'-','') as 020$a,
-	REPLACE(`LCCN`,'-','') as 021$a
+SELECT *,
+	@KohaItemType as KohaItemType,
+	@HomeBranch as HomeBranch,
+	`MediaLocations`.`MediaLocationCode` as HoldingBranch,
+	RTRIM(CONCAT(`AuthorLastName`, ', ', `AuthorFirstName`, ' ', `AuthorMiddleName`)) as AuthorFullName,				# concatenates author names
+	RTRIM(REPLACE(CONCAT_WS(' ',`CallNum1`, `CallNum2`, `CallNum3`, `CallNum4`, `CallNum5`),'  ',' ')) as CallNumFull,	# concatenates call number
+	REPLACE(`ISBN`,'-','') as ISBNFormatted,
+	REPLACE(`LCCN`,'-','') as LCCNFormatted
 	INTO OUTFILE '",@Outputfile,"'
 		FIELDS TERMINATED BY \'\t\' OPTIONALLY ENCLOSED BY \'\"\'
 		LINES TERMINATED BY \'\r\n\'

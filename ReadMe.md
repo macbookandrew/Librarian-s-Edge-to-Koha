@@ -18,7 +18,7 @@ Note: these steps assume you’re working on Mac OS X (MySQL, command line) and 
 
 3. Converting the Data
 ---------------------
-1. Using [MarcEdit’s](http://marcedit.reeset.net) Delimited Text Translator tool, convert the `.txt` files to MRK format, using the [MarcEdit template](MarcEdit template.mrd) for field mappings.
+1. Using [MarcEdit’s](http://marcedit.reeset.net) Delimited Text Translator tool, open the `.txt` files one at a time, set the “Text Qualifier” field to a double quote mark, and convert the `.txt` files to MRK format using the [MarcEdit template](MarcEdit template.mrd) for field mappings.
 2. Using [MarcEdit’s](http://marcedit.reeset.net) MarcMaker tool, convert the `.mrk` files to MRC format.
 
 4. Importing the Data

@@ -1,14 +1,5 @@
 This repository contains instructions, scripts, and templates to help export existing library data from Librarian’s Edge to [Koha](http://koha-community.org/).
 
-Table of Contents
-=================
-1. Process
-	1. Getting the Data
-	2. Tweaking the data
-	3. Converting the Data
-	4. Importing the Data
-2. Reference
-
 Process
 =======
 Note: these steps assume you’re working on Mac OS X (MySQL, command line) and Windows 7 Pro (MarcEdit). You may need to adjust based on your operating systems.

@@ -1,10 +1,10 @@
 # Set the variables and run this query as many times as you have MediaTypes in Librarian’s Edge
 
-SET @KohaItemType	=	'BOOKS';							# The code for the Item Type you have (or plan to) created in Koha
-SET @MediaTypeCode	=	'Book';								# The existing MediaTypeCode in Librarian’s Edge
-SET @Filename		=	"books.txt";						# Filename of your export file
-SET @OutputFile		=	CONCAT('/tmp/LibEdge/',@Filename);	# Path to your export file
-SET @HomeBranch		=	'MainLibrary';						# The name of your main (owning) library (see http://wiki.koha-community.org/wiki/Holdings_data_fields_(9xx))
+SET @KohaItemType	=	'BOOKS';				# The code for the Item Type you have (or plan to) created in Koha
+SET @MediaTypeCode	=	'Book';				# The existing MediaTypeCode in Librarian’s Edge
+SET @Filename	=	"books.txt";			# Filename of your export file
+SET @OutputFile	=	CONCAT('/tmp/LibEdge/',@Filename);	# Path to your export file
+SET @HomeBranch	=	'MainLibrary';			# The name of your main (owning) library (see http://wiki.koha-community.org/wiki/Holdings_data_fields_(9xx))
 
 SET @Query = CONCAT("SELECT 
 	MediaRefID as 024$a,
@@ -31,8 +31,10 @@ SET @Query = CONCAT("SELECT
 	@KohaItemType as 952$y,
 	@HomeBranch as 952$a,
 	`MediaLocations`.`MediaLocationCode` as 952$b,
-	RTRIM(CONCAT(`AuthorLastName`, ', ', `AuthorFirstName`, ' ', `AuthorMiddleName`)) as 100$a,				# concatenates author names
-	RTRIM(REPLACE(CONCAT_WS(' ',`CallNum1`, `CallNum2`, `CallNum3`, `CallNum4`, `CallNum5`),'  ',' ')) as 952$o,	# concatenates call number
+	# concatenate author names
+	RTRIM(CONCAT(`AuthorLastName`, ', ', `AuthorFirstName`, ' ', `AuthorMiddleName`)) as 100$a,
+	# concatenate call number
+	RTRIM(REPLACE(CONCAT_WS(' ',`CallNum1`, `CallNum2`, `CallNum3`, `CallNum4`, `CallNum5`),'  ',' ')) as 952$o,
 	REPLACE(`ISBN`,'-','') as 020$a,
 	REPLACE(`LCCN`,'-','') as 021$a
 	INTO OUTFILE '",@Outputfile,"'

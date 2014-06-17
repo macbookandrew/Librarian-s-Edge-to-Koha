@@ -1,9 +1,9 @@
 # Set the variables and run this query as many times as you have MediaTypes in Librarian’s Edge
 
-SET @itype			=	'BOOKS';										# The code for the Item Type you have (or plan to) created in Koha
-SET @MediaTypeCode	=	'Book';											# The existing MediaTypeCode in Librarian’s Edge
-SET @HomeBranch		=	'MainLibrary';									# The name of your main (owning) library (see http://wiki.koha-community.org/wiki/Holdings_data_fields_(9xx))
-SET @HoldingBranch	=	'HoldingBranch';								# The name of your holding library (see http://wiki.koha-community.org/wiki/Holdings_data_fields_(9xx))
+SET @itype	=	'BOOKS';	# The code for the Item Type you have (or plan to) created in Koha
+SET @MediaTypeCode	=	'Book';	# The existing MediaTypeCode in Librarian’s Edge
+SET @HomeBranch	=	'MainLibrary';	# The name of your main (owning) library (see http://wiki.koha-community.org/wiki/Holdings_data_fields_(9xx))
+SET @HoldingBranch	=	'HoldingBranch';	# The name of your holding library (see http://wiki.koha-community.org/wiki/Holdings_data_fields_(9xx))
 SET @OutputSQLFile	=	CONCAT('/tmp/LibEdge/holdings-',@itype,'.csv');	# The path and filename of the SQL file to generate
 
 # Get MediaRefID from marcxml column
@@ -25,7 +25,7 @@ SELECT
 	RTRIM(REPLACE(CONCAT_WS(' ',`CallNum1`, `CallNum2`, `CallNum3`, `CallNum4`, `CallNum5`),'  ',' ')) as itemcallnumber,	# concatenates call number
 	@HomeBranch as homebranch,
 	@HoldingBranch as holdingbranch,
-	IF(`Media`.`cost` IS NULL or `Media`.`cost` = \'\', \"0\", `Media`.`cost`) as price,										# fill with 0 if no prices is present
+	IF(`Media`.`cost` IS NULL or `Media`.`cost` = \'\', \"0\", `Media`.`cost`) as price,	# fill with 0 if no prices is present
 	CURDATE() as replacementpricedate,
 	CURDATE() as datelastseen,
 	\"0\" as notforloan,

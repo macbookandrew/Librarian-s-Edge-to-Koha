@@ -27,6 +27,12 @@ Note: these steps assume you’re working on Mac OS X (MySQL, command line) and 
 2. Upload the compiled `.mrc` file into the resevoir.
 3. Navigate to the “Staged MARC management” tool, click on the file name of the batch(es) you imported, set preferences as desired, and import them to the library.
 
+5. Adding Items to Koha
+----------------------
+1. Once you have added all the items to Koha, export the `biblio` and `biblioitems` tables and import them to your local MySQL instance.
+2. Set the parameters and run the [Build holdings table](Build holdings table.sql) SQL queries as many times as you have distinct `MediaTypes` in Librarian’s Edge.
+3. Import the `.csv` files into Koha, using the first line to match field names.
+
 Reference
 =========
 - For information on MARC codes and formatting, see [the official MARC21 format site](http://www.loc.gov/marc/bibliographic/bdsummary.html) and the [Koha-specific fields](http://goo.gl/QR4SnT).

@@ -11,27 +11,32 @@ Note: these steps assume you’re working on Mac OS X (MySQL, command line) and 
 3. Create a MySQL database, use the [Media table syntax](Media table syntax.sql) SQL file to set up the tables, then import the CSV files to those tables.
 
 2. Tweaking the Data
--------------------
+--------------------
 1. Set up the [item types](http://manual.koha-community.org/3.6/en/basicparams.html) in your Koha installation and make note of the item type codes.
 2. Make a list of the media types in your Librarian’s Edge installation and the corresponding item types in your new Koha library.
 3. Export the data from MySQL to tab-separated text files by setting variables and running the query in the [Export MySQL to TSV](Export MySQL to TSV.sql) file as many times as you have distinct `MediaTypes` in Librarian’s Edge.
 
 3. Converting the Data
----------------------
+----------------------
 1. Using [MarcEdit’s](http://marcedit.reeset.net) Delimited Text Translator tool, open the `.txt` files one at a time, set the “Text Qualifier” field to a double quote mark, and convert the `.txt` files to MRK format using the [MarcEdit template](MarcEdit template.mrd) for field mappings.
 2. Using [MarcEdit’s](http://marcedit.reeset.net) MarcMaker tool, convert the `.mrk` files to MRC format.
 
 4. Importing the Data to Koha
-----------------------------
+-----------------------------
 1. Navigate to the Koha “Stage MARC records for import” tool.
 2. Upload the compiled `.mrc` file into the resevoir.
 3. Navigate to the “Staged MARC management” tool, click on the file name of the batch(es) you imported, set preferences as desired, and import them to the library.
 
 5. Adding Items to Koha
-----------------------
+-----------------------
 1. Once you have added all the items to Koha, export the `biblio` and `biblioitems` tables and import them to your local MySQL instance.
 2. Set the parameters and run the [Build holdings table](Build holdings table.sql) SQL queries as many times as you have distinct `MediaTypes` in Librarian’s Edge.
 3. Import the `.csv` files into Koha, using the first line to match field names.
+
+6. Generating Barcodes from Existing Information
+------------------------------------------------
+1. First, check for duplicate items by running the [Check for duplicate items](Check for duplicate items.sql) query and examining the output file. You may find serials that need to be converted from book-type records to serial-type records.
+2. 
 
 Reference
 =========

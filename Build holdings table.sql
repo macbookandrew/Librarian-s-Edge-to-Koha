@@ -9,9 +9,10 @@ SET @OutputSQLFile	=	CONCAT('/tmp/LibEdge/holdings-',@itype,'.csv');	# The path 
 # Get MediaRefID from marcxml column
 DROP TEMPORARY TABLE IF EXISTS biblio_holdings_info;
 CREATE TEMPORARY TABLE biblio_holdings_info
-SELECT biblioitemnumber, biblionumber, SUBSTRING_INDEX(
-		ExtractValue(`marcxml`, '//datafield/subfield')
-	, ' ', 1) as MARCMediaRefID
+SELECT
+	biblioitemnumber,
+	biblionumber,
+	ExtractValue(`marcxml`, '//datafield[@tag="024"]/subfield[@code="a"]') AS MARCMediaRefID
 FROM biblioitems;
 
 # Build a temporary table with all the info needed

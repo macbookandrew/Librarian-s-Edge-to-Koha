@@ -33,10 +33,11 @@ Note: these steps assume you’re working on Mac OS X (MySQL, command line) and 
 2. Set the parameters and run the [Build holdings table](Build holdings table.sql) SQL queries as many times as you have distinct `MediaTypes` in Librarian’s Edge.
 3. Import the `.csv` files into Koha, using the first line to match field names.
 
-6. Generating Barcodes from Existing Information
+6. Generating ISBN-based Barcodes from Existing Information
 ------------------------------------------------
 1. First, check for duplicate items by running the [Check for duplicate items](Check for duplicate items.sql) query and examining the output file. You may find serials that need to be converted from book-type records to serial-type records.
-2. 
+2. After handling the duplicates, run the [Generate barcodes](Generate barcodes.sql) script to automatically populate the `barcode` field wiht the ISBN number (or the biblioitemnumber for items with no ISBN number).
+	- Note: you may have to manually resolve duplicate biblioitemnumbers for the last query to run successfully.
 
 Reference
 =========
